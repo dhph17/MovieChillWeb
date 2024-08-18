@@ -27,18 +27,25 @@ header {
     .navbar-lists {
         display: flex;
 
-        .navbar-item {
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            list-style: none;
+        li {
             margin-right: 7%;
-            text-wrap: nowrap;
+            list-style: none;
+
+            .navbar-item {
+                color: white;
+                font-size: 1.2rem;
+                font-weight: bold;
+
+                text-wrap: nowrap;
+                text-decoration: none;
+            }
+
+            .navbar-item:hover {
+                cursor: pointer;
+            }
         }
 
-        .navbar-item:hover {
-            cursor: pointer;
-        }
+
     }
 }
 

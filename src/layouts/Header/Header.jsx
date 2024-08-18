@@ -3,8 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faMagnifyingGlass
 } from '@fortawesome/free-solid-svg-icons';
-
 import './styles.scss'
+
+import {
+    Link
+} from "react-router-dom";
+
 const Header = () => {
     return (
         <>
@@ -14,11 +18,11 @@ const Header = () => {
                 </div>
                 <nav className="navbar">
                     <ul className="navbar-lists">
-                        <li className="navbar-item">HOME</li>
-                        <li className="navbar-item">MOVIES</li>
-                        <li className="navbar-item">TV SHOWS</li>
-                        <li className="navbar-item">PEOPLE</li>
-                        <li className="navbar-item">GENRE</li>
+                        <li><Link className="navbar-item" to="/">HOME</Link></li>
+                        <li><Link className="navbar-item" to="/movie">MOVIES</Link></li>
+                        <li><Link className="navbar-item" to="/tvshow">TV SHOWS</Link></li>
+                        <li><Link className="navbar-item" to="/people">PEOPLE</Link></li>
+                        <li><Link className="navbar-item" to="/">GENRE</Link></li>
                     </ul>
                 </nav>
                 <div id="search-section">

@@ -6,8 +6,13 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #2C2C2C;
+    background: rgba(0, 0, 0, 0);
     padding: 0.5% 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }
 
 #logo-section {
@@ -64,6 +69,10 @@ header {
         border: none;
         outline: none;
         width: 90%;
+    }
+
+    #search-but {
+        color: black;
     }
 
     #search-but:hover {

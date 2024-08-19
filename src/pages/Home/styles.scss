@@ -1,0 +1,113 @@
+@import "../../assets/font/styles.scss";
+
+#banner-section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .banner-content {
+        width: 100%;
+        z-index: 100;
+
+        .side-content {
+
+            width: 50%;
+            padding: 0 3% 0 7%;
+
+            h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .side-content_idmb {
+                display: flex;
+                margin-bottom: 1rem;
+
+                .side-content_idmb_item {
+                    margin-right: 5%;
+                    display: flex;
+
+                    .side-icon {
+                        color: #5DC882;
+                        margin-right: 10%;
+                    }
+
+                    span {
+                        text-wrap: nowrap;
+                    }
+                }
+            }
+
+            .side-content_detail {
+                margin-bottom: 1.5rem;
+                font-size: 1.2rem;
+                font-weight: 500;
+                line-height: 1.5;
+            }
+
+            .side-content_button {
+                background-color: #5DC882;
+                border: black 2px solid;
+                padding: 2% 5%;
+                display: flex;
+
+                .button-icon {
+                    margin-right: 7%;
+                }
+
+                p {
+                    text-wrap: nowrap;
+                    font-weight: bolder;
+                }
+            }
+
+            .side-content_button:hover {
+                cursor: pointer;
+            }
+
+            .side-content_button:hover>p {
+                cursor: pointer;
+                transform: translateX(5px);
+                transition: all 0.3s ease;
+            }
+        }
+
+        .side-content::before {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        }
+
+    }
+}
+
+#movie-section {
+    background-color: #1C1C1C;
+    padding: 5% 6%;
+    width: 100%;
+}

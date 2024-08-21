@@ -7,12 +7,21 @@ header {
     justify-content: space-around;
     align-items: center;
     background: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease;
     padding: 0.5% 0;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 1000;
+}
+
+header.transparent {
+    background-color: transparent;
+}
+
+header.solid {
+    background-color: black;
 }
 
 #logo-section {

@@ -1,3 +1,5 @@
+@import "../../assets/font/styles.scss";
+
 #movie {
     margin-bottom: 3%;
 }
@@ -67,9 +69,6 @@
         .item-name {
             z-index: 1;
             display: block;
-
-
-
         }
     }
 }

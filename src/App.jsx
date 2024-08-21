@@ -45,8 +45,6 @@ function App() {
     })();
   }, []);
 
-  console.log("Movie Trending: ", movieTrending);
-  console.log("Movie Top Rates: ", movieTopRates);
   return (
     <>
       <Header />

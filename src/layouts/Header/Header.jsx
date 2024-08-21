@@ -10,9 +10,22 @@ import {
 } from "react-router-dom";
 
 const Header = () => {
+
+    window.addEventListener('scroll', function () {
+        const header = document.getElementById('header');
+
+        if (window.scrollY > 0) {
+            header.classList.remove('transparent');
+            header.classList.add('solid');
+        } else {
+            header.classList.remove('solid');
+            header.classList.add('transparent');
+        }
+    });
+
     return (
         <>
-            <header>
+            <header id="header">
                 <div id="logo-section">
                     <img src={Logo} alt="Netflix Logo" />
                 </div>

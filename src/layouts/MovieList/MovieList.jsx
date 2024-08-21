@@ -27,14 +27,14 @@ const responsive = {
     },
 };
 
-const TrendingFilm = ({ title, data }) => {
+const MovieList = ({ title, data }) => {
     return (
         <div id="movie">
             <div className="movie-title">
                 {title}
                 <FontAwesomeIcon className="movie-title_icon" icon={faAngleRight} />
             </div>
-            <Carousel className="movie_lists" responsive={responsive} draggable={false}>
+            <Carousel className="movie_lists" responsive={responsive} draggable={false} autoPlay={true} autoPlaySpeed={3000}>
                 {data?.map((movie) => (
                     <div
                         key={movie.id}
@@ -57,9 +57,9 @@ const TrendingFilm = ({ title, data }) => {
     )
 }
 
-TrendingFilm.propTypes = {
+MovieList.propTypes = {
     title: PropTypes.string.isRequired,
     data: PropTypes.array,
 };
 
-export default TrendingFilm
+export default MovieList

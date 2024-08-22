@@ -80,9 +80,7 @@
 
                 p.expanded {
                     -webkit-line-clamp: unset;
-                    /* Remove line clamp */
                     max-height: none;
-                    /* Remove max-height restriction */
                 }
 
                 :hover {

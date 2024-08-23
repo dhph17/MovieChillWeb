@@ -8,6 +8,7 @@ import TV from './pages/TV/TV';
 import People from './pages/People/People';
 import ActorDetail from './pages/PeopleDetail/PeopleDetail';
 import MovieDetail from './pages/MovieDetail/MovieDetail';
+import MovieList from './pages/MovieList/MovieList';
 
 import Header from './layouts/Header/Header'
 
@@ -57,6 +58,7 @@ function App() {
         <Route path="/tvshow" element={<TV />} />
         <Route path="/people/:idPeople" element={<ActorDetail />} />
         <Route path="/movie/:idMovie" element={<MovieDetail />} />
+        <Route path="/movielist/:movielist" element={<MovieList />} />
       </Routes>
 
     </>

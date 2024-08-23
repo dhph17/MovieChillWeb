@@ -1,8 +1,12 @@
 
-
+import './styles.scss'
 const Movie = () => {
     return (
-        <div>Movie</div>
+        <>
+            <div>
+                <p>MOVIE</p>
+            </div>
+        </>
     )
 }
 

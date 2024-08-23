@@ -13,7 +13,7 @@ import MovieList from '../../layouts/MovieList/MovieList';
 import './styles.scss';
 
 const PeopleDetail = () => {
-    const { id } = useParams();
+    const { idPeople } = useParams();
     const [actor, setActor] = useState(null);
     const [movies, setMovies] = useState([]);
     const [tvShows, setTvShows] = useState([]);
@@ -26,7 +26,6 @@ const PeopleDetail = () => {
     };
 
     const [isExpanded, setIsExpanded] = useState(false);
-
     const toggleExpand = () => {
         setIsExpanded(!isExpanded);
     };
@@ -36,10 +35,10 @@ const PeopleDetail = () => {
             try {
                 let data = {}
                 const urls = [
-                    `https://api.themoviedb.org/3/person/${id}?language=en-US`,
-                    `https://api.themoviedb.org/3/person/${id}/external_ids`,
-                    `https://api.themoviedb.org/3/person/${id}/movie_credits?language=vi`,
-                    `https://api.themoviedb.org/3/person/${id}/tv_credits?language=vi`
+                    `https://api.themoviedb.org/3/person/${idPeople}?language=en-US`,
+                    `https://api.themoviedb.org/3/person/${idPeople}/external_ids`,
+                    `https://api.themoviedb.org/3/person/${idPeople}/movie_credits?language=vi`,
+                    `https://api.themoviedb.org/3/person/${idPeople}/tv_credits?language=vi`
                     // Add more URLs here...
                 ];
 
@@ -71,7 +70,7 @@ const PeopleDetail = () => {
         };
 
         fetchActorDetails();
-    }, [id]);
+    }, [idPeople]);
     console.log(actor);
 
     if (!actor) return <p>Loading...</p>;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,6 +32,7 @@ const responsive = {
 };
 
 const Banner = ({ movieTrending }) => {
+    let navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
 
     const toggleExpand = () => {
@@ -61,7 +63,10 @@ const Banner = ({ movieTrending }) => {
                                 </p>
                             </div>
 
-                            <button className="side-content_button">
+                            <button
+                                className="side-content_button"
+                                onClick={() => navigate(`/movie/${movie.id}`)}
+                            >
                                 <FontAwesomeIcon className="button-icon" icon={faPlay} />
                                 <p>WATCH NOW</p>
                             </button>

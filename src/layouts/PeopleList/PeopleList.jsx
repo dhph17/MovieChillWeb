@@ -27,30 +27,29 @@ const responsive = {
         items: 2,
     },
 };
-
-const MovieList = ({ title, data }) => {
+const PeopleList = ({ title, data }) => {
     let navigate = useNavigate();
+
     return (
-        <div id="movie">
-            <div className="movie-title">
+        <div id="people">
+            <div className="people-title">
                 {title}
-                <FontAwesomeIcon className="movie-title_icon" icon={faAngleRight} />
+                <FontAwesomeIcon className="people-title_icon" icon={faAngleRight} />
             </div>
-            <Carousel className="movie_lists" responsive={responsive} draggable={false} autoPlay={true} autoPlaySpeed={3000}>
-                {data?.map((movie) => (
+            <Carousel className="people_lists" responsive={responsive} draggable={false} autoPlay={true} autoPlaySpeed={3000}>
+                {data?.map((people) => (
                     <div
-                        key={movie.id}
-                        className="movie_item"
+                        key={people.id}
+                        className="people_item"
                         style={{
-                            backgroundImage: `url(${import.meta.env.VITE_IMG_URL}${movie.poster_path
-                                })`,
+                            backgroundImage: `url(${import.meta.env.VITE_IMG_URL}${people.profile_path})`,
                         }}
-                        onClick={() => navigate(`/movie/${movie.id}`)}
+                        onClick={() => navigate(`/people/${people.id}`)}
                     >
                         <div className="overlay-item">
                         </div>
                         <h3 className="item-name">
-                            {movie.name || movie.title || movie.original_title}
+                            {people.name || people.original_name}
                         </h3>
                     </div>
                 ))}
@@ -59,9 +58,9 @@ const MovieList = ({ title, data }) => {
     )
 }
 
-MovieList.propTypes = {
+PeopleList.propTypes = {
     title: PropTypes.string.isRequired,
     data: PropTypes.array,
 };
 
-export default MovieList
+export default PeopleList

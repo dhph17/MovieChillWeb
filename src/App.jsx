@@ -7,7 +7,7 @@ import Movie from './pages/Movie/Movie';
 import TV from './pages/TV/TV';
 import People from './pages/People/People';
 import ActorDetail from './pages/PeopleDetail/PeopleDetail';
-
+import MovieDetail from './pages/MovieDetail/MovieDetail';
 
 import Header from './layouts/Header/Header'
 
@@ -55,7 +55,8 @@ function App() {
         <Route path="/movie" element={<Movie />} />
         <Route path="/people" element={<People />} />
         <Route path="/tvshow" element={<TV />} />
-        <Route path="/people/:id" element={<ActorDetail />} />
+        <Route path="/people/:idPeople" element={<ActorDetail />} />
+        <Route path="/movie/:idMovie" element={<MovieDetail />} />
       </Routes>
 
     </>

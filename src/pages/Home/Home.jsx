@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useEffect } from "react";
 
 import Banner from "../../layouts/Banner/Banner";
 import MovieList from "../../layouts/MovieList/MovieList";
@@ -7,10 +6,6 @@ import MovieList from "../../layouts/MovieList/MovieList";
 import "./styles.scss"
 
 const Home = ({ movieTrending, movieTopRates }) => {
-    useEffect(() => {
-
-    }, []);
-
     return (
         <>
             <Banner movieTrending={movieTrending} />
@@ -26,7 +21,6 @@ const Home = ({ movieTrending, movieTopRates }) => {
 Home.propTypes = {
     movieTrending: PropTypes.array,
     movieTopRates: PropTypes.array,
-    movieBanner: PropTypes.array,
 };
 
 export default Home

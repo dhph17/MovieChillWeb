@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import ReactPaginate from 'react-paginate';
 
 import "./styles.scss";
 const People = () => {
     let navigate = useNavigate();
 
     const [actors, setActors] = useState([]);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
     useEffect(() => {
         const fetchActors = async () => {
             try {
                 const response = await fetch(
-                    "https://api.themoviedb.org/3/person/popular?language=vi&page=1",
+                    `https://api.themoviedb.org/3/person/popular?language=vi&page=${page}`,
                     {
                         method: "GET",
                         headers: {
@@ -21,6 +25,7 @@ const People = () => {
                 );
                 const data = await response.json();
                 setActors(data.results);
+                setTotalPages(Math.min(data.total_pages, 100));
             } catch (error) {
                 console.error('Error fetching actors:', error);
             }
@@ -28,8 +33,13 @@ const People = () => {
 
         fetchActors();
 
-    }, []);
+    }, [page]);
     console.log(actors);
+
+    const handlePageClick = async (data) => {
+        console.log(data.selected);
+        setPage(data.selected + 1)
+    };
 
     return (
         <>
@@ -56,6 +66,27 @@ const People = () => {
                 </div>
 
             </div>
+
+            <ReactPaginate className='pagination-section'
+                breakLabel="..."
+                nextLabel={"»"}
+                onPageChange={handlePageClick}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={3}
+                pageCount={totalPages}
+                previousLabel={"«"}
+                renderOnZeroPageCount={null}
+                containerClassName={'pagination'}
+                pageClassName={'page-item'}
+                pageLinkClassName={'page-link'}
+                nextClassName={'page-item'}
+                nextLinkClassName={'page-link'}
+                previousClassName={page === 1 ? 'page-item disabled' : 'page-item'}
+                previousLinkClassName={'page-link'}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                activeClassName={'active'}
+            />
         </>
     )
 }

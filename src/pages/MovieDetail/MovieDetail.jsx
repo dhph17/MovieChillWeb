@@ -135,7 +135,7 @@ const MovieDetail = () => {
                     <div className="movieDetail-info_idmb">
                         <div className="movieDetail-info_item">
                             <div className='movieDetail-info_item_circle'>
-                                <div className="circle-border">
+                                <div className="circle-border" style={{ '--score': movie.vote_average || 0 }}>
                                     <p className='movieDetail-info_item_score'>
                                         {movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}
                                     </p>

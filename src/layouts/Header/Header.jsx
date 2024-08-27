@@ -1,5 +1,5 @@
-import Logo from '../../assets/images/logo.png';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faMagnifyingGlass,
@@ -13,8 +13,10 @@ import {
 
 import { Menu, MenuItem } from "../Popper/Popper";
 
-const Header = () => {
+import Logo from '../../assets/images/logo.png';
 
+const Header = () => {
+    let navigate = useNavigate();
     window.addEventListener('scroll', function () {
         const header = document.getElementById('header');
 
@@ -56,7 +58,7 @@ const Header = () => {
         <>
             <header id="header">
                 <div id="logo-section">
-                    <img src={Logo} alt="Netflix Logo" />
+                    <img src={Logo} alt="Netflix Logo" onClick={() => navigate("/")} />
                 </div>
                 <nav className="navbar">
                     <ul className="navbar-lists">

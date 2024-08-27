@@ -185,7 +185,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: conic-gradient(#4caf50 calc(5.225 * 36deg),
+        background: conic-gradient(#4caf50 calc(var(--score)* 36deg),
                 /* Filled portion (score out of 10) */
                 #ccc 0deg);
 

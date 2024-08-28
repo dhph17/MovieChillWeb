@@ -42,7 +42,7 @@ const Banner = ({ movieTrending }) => {
         <Carousel id="banner-section" responsive={responsive} draggable={false} autoPlay={true} autoPlaySpeed={3000}>
             {movieTrending?.map((movie) => (
                 <div key={movie.id} id="banner-item">
-                    <img src={`${import.meta.env.VITE_IMG_URL}${movie.backdrop_path}}`} alt="Banner" className="banner-image" />
+                    <img src={`${import.meta.env.VITE_BACKGROUND_URL}${movie.backdrop_path}}`} alt="Banner" className="banner-image" />
                     <div className="overlay">
                     </div>
                     <div className="banner-content">

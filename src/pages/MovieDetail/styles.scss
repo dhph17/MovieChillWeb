@@ -4,15 +4,16 @@
     background-color: #1C1C1C;
     display: flex;
     padding: 6% 10%;
-    // object-fit: cover;
+    object-fit: cover;
     height: 100vh;
     background-size: cover;
+    background-position: center center;
+    image-rendering: auto;
 
     .movieDetail-image {
         width: 300px;
         height: 450px;
         margin-right: 5%;
-        // object-fit: cover;
         background-size: cover;
         flex-shrink: 0;
         position: relative;

@@ -78,7 +78,7 @@ const MovieDetail = () => {
                 const urls = [
                     `https://api.themoviedb.org/3/movie/${idMovie}?language=en-US`,
                     `https://api.themoviedb.org/3/movie/${idMovie}/credits?language=en-US`,
-                    `https://api.themoviedb.org/3/movie/${idMovie}/videos?language=en-US`
+                    `https://api.themoviedb.org/3/movie/${idMovie}/videos?language=en-US`,
                 ];
 
                 const options = {
@@ -112,7 +112,7 @@ const MovieDetail = () => {
     return (
         <>
             <div id="movieDetail-section"
-                style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${import.meta.env.VITE_IMG_URL}${movie.backdrop_path})` }}
+                style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${import.meta.env.VITE_BACKGROUND_URL}${movie.backdrop_path})` }}
             >
                 <div
                     className="movieDetail-image"

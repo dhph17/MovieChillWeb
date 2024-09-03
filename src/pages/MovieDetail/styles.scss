@@ -123,6 +123,7 @@
 
             span {
                 font-weight: bolder;
+                font-size: 1.1rem;
             }
 
             .movieDetail-info_item_header {
@@ -143,16 +144,16 @@
             }
 
             .movieDetail-info_detail_bio {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 font-weight: bolder;
                 margin-bottom: 2%;
                 display: -webkit-box;
-                -webkit-line-clamp: 5;
+                -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 transition: max-height 0.3s ease;
-                line-height: 1.3;
+                line-height: 1.2;
 
             }
 
@@ -165,12 +166,29 @@
                 cursor: pointer;
             }
         }
-    }
-}
 
-#movieDetail-actor {
-    padding: 3% 10%;
-    background: #2C2C2C;
+        .movieDetail-info_director {
+            margin-bottom: 2%;
+
+            p,
+            span {
+                text-wrap: nowrap;
+                font-size: 1.2rem;
+            }
+
+            span {
+                font-weight: bolder;
+                font-size: 1.1rem;
+            }
+
+            .movieDetail-info_item_header {
+                font-weight: lighter;
+                margin-right: 14%;
+                color: #C0C0C0;
+                margin-bottom: 1%;
+            }
+        }
+    }
 }
 
 .movieDetail-info_item_circle {
@@ -210,4 +228,146 @@
             transform: translate(-50%, -50%);
         }
     }
+}
+
+.movieDetail-Info {
+    display: flex;
+    padding: 3% 7%;
+    background-color: #2C2C2C;
+
+    .Info-left {
+        width: 65vw;
+
+        #movieDetail-review {
+            .review-title {
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin-bottom: 1.2rem;
+
+                .movie-review_icon {
+                    margin-left: 0.5%;
+                }
+            }
+
+            .review-section {
+                display: grid;
+                grid-template-columns: auto auto;
+                gap: 50px 2%;
+
+                .review-item {
+                    box-shadow: 10px 10px 10px #1C1C1C;
+                    background-color: #1C1C1C;
+                    padding: 5%;
+                    border-radius: 50px;
+                    position: relative;
+
+                    .review-item_header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 4%;
+
+                        .review-item_header_name {
+                            display: flex;
+                            align-items: center;
+
+                            .header_name-img {
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50%;
+                                margin-right: 10%;
+                            }
+
+                            .header_name-name {
+                                font-weight: bold;
+                                font-size: 1.1rem;
+                            }
+                        }
+
+                        .review-item_header_rating {
+                            font-weight: bold;
+                            font-size: 1.1rem;
+                        }
+                    }
+
+                    .review-item_content {
+                        margin-bottom: 4%;
+
+                        .content {
+                            display: -webkit-box;
+                            -webkit-line-clamp: 4;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                            // text-overflow: ellipsis;
+                            transition: max-height 0.3s ease;
+                            line-height: 1.5;
+                        }
+
+                        .content.expanded {
+                            -webkit-line-clamp: unset;
+                            max-height: none;
+                            padding-bottom: 5%;
+                        }
+                    }
+
+                    :hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .review-item_footer {
+                    text-align: end;
+                    position: absolute;
+                    right: 5%;
+                    bottom: 5%;
+
+                    p {
+                        color: #C0C0C0;
+                        font-weight: lighter;
+                        font-size: 0.9rem;
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    .Info-right {
+        padding-left: 2.5rem;
+
+        #movieDetail-Bio {
+            padding-top: 2.6rem;
+
+            .bio_item {
+                margin-bottom: 1.5rem;
+
+                .bio_item-heading {
+                    font-weight: bold;
+                    font-size: 1.1rem;
+                    margin-bottom: 0.2rem;
+                }
+
+                .bio_item-list {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    .keywordItem {
+                        margin: 2%;
+                        margin-left: 0;
+                        padding: 1% 2%;
+                        list-style: none;
+                        border-radius: 2px;
+                        color: #1C1C1C;
+                        background-color: #ccc;
+                        white-space: nowrap
+                    }
+                }
+            }
+
+
+        }
+    }
+
+
 }

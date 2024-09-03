@@ -32,6 +32,7 @@ const People = () => {
         };
 
         fetchActors();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
     }, [page]);
     console.log(actors);

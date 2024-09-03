@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import Modal from 'react-modal';
 import YouTube from 'react-youtube';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 
 import PeopleList from '../../layouts/PeopleList/PeopleList';
+import ReviewList from '../../layouts/ReviewList/ReviewList';
 import './styles.scss'
 
 const customStyles = {
@@ -37,9 +38,13 @@ const opts = {
 };
 
 const MovieDetail = () => {
+    let navigate = useNavigate();
     const { idMovie } = useParams();
     const [movie, setMovie] = useState({});
     const [actors, setActors] = useState([]);
+    const [crews, setCrews] = useState([]);
+    const [keywords, setKeywords] = useState([])
+    const [reviews, setReviews] = useState([])
 
     const [modalIsOpen, setIsOpen] = useState(false);
     const [trailerUrl, setTrailerUrl] = useState("");
@@ -78,7 +83,8 @@ const MovieDetail = () => {
                 const urls = [
                     `https://api.themoviedb.org/3/movie/${idMovie}?language=en-US`,
                     `https://api.themoviedb.org/3/movie/${idMovie}/credits?language=en-US`,
-                    `https://api.themoviedb.org/3/movie/${idMovie}/videos?language=en-US`,
+                    `https://api.themoviedb.org/3/movie/${idMovie}/keywords`,
+                    `https://api.themoviedb.org/3/movie/${idMovie}/reviews?language=en-US&page=1`
                 ];
 
                 const options = {
@@ -95,7 +101,9 @@ const MovieDetail = () => {
                     const response = await Promise.all(urls.map(fetchMovies));
                     data = response[0];
                     setActors(response[1].cast);
-
+                    setCrews(response[1].crew);
+                    setKeywords(response[2].keywords)
+                    setReviews(response[3].results)
                 } catch (error) {
                     console.log(error);
                 }
@@ -109,10 +117,11 @@ const MovieDetail = () => {
     }, [idMovie]);
     console.log(actors);
 
+    const directorOrStoryCrew = crews.find(crew => ['Director', 'Story'].includes(crew.job));
     return (
         <>
             <div id="movieDetail-section"
-                style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${import.meta.env.VITE_BACKGROUND_URL}${movie.backdrop_path})` }}
+                style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)), url(${import.meta.env.VITE_BACKGROUND_URL}${movie.backdrop_path})` }}
             >
                 <div
                     className="movieDetail-image"
@@ -152,7 +161,7 @@ const MovieDetail = () => {
                             <p className='movieDetail-info_item_header'>
                                 <FontAwesomeIcon icon={faClock} />
                             </p>
-                            <p className='movieDetail-info_item_answer'>{movie.runtime} mins</p>
+                            <p className='movieDetail-info_item_answer'>{Math.floor(movie.runtime / 60)}h {(movie.runtime % 60)}m</p>
                         </div>
                     </div>
                     <div className="movieDetail-info_genre">
@@ -166,14 +175,91 @@ const MovieDetail = () => {
                         {movie.overview && <p className='movieDetail-info_detail_header'>Overview</p>}
                         <p className={isExpanded ? 'movieDetail-info_detail_bio expanded' : 'movieDetail-info_detail_bio'}>{movie.overview}</p>
                     </div>
+                    <div className="movieDetail-info_director">
+                        <p className='movieDetail-info_item_header'>Director</p>
+                        <span
+                            className="movieDetail-info_director_item"
+                            onClick={() => {
+                                if (directorOrStoryCrew) {
+                                    navigate(`/people/${directorOrStoryCrew.id}`);
+                                }
+                            }}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            {directorOrStoryCrew?.original_name || 'N/A'}
+                        </span>
+                    </div>
 
 
                 </div>
             </div >
-            <div id="movieDetail-actor">
-                <PeopleList title="Member" data={actors} />
+            <div className="movieDetail-Info">
+                <div className="Info-left">
+                    <div id="movieDetail-actor">
+                        <PeopleList title="Cast" data={actors} />
+                    </div>
+                    <div id="movieDetail-review">
+                        <ReviewList reviews={reviews} />
+                    </div>
+                </div>
+                <div className="Info-right">
+                    <div id="movieDetail-Bio">
+                        <div className="bio_item" id="bio_origin">
+                            <div className="bio_item-heading">
+                                <p>Original Title</p>
+                            </div>
+                            <div className="bio_item-content">
+                                <p>{movie.original_title}</p>
+                            </div>
+                        </div>
+                        <div className="bio_item" id="bio_status">
+                            <div className="bio_item-heading">
+                                <p>Status</p>
+                            </div>
+                            <div className="bio_item-content">
+                                <p>{movie.status}</p>
+                            </div>
+                        </div>
+                        <div className="bio_item" id="bio_language">
+                            <div className="bio_item-heading">
+                                <p>Language</p>
+                            </div>
+                            <div className="bio_item-content">
+                                <p>{movie.original_language}</p>
+                            </div>
+                        </div>
+                        <div className="bio_item" id="bio_budget">
+                            <div className="bio_item-heading">
+                                <p>Budget</p>
+                            </div>
+                            <div className="bio_item-content">
+                                <p>$ {parseInt(movie.budget).toLocaleString("en-US")}</p>
+                            </div>
+                        </div>
+                        <div className="bio_item" id="bio_revenue">
+                            <div className="bio_item-heading">
+                                <p>Revenue</p>
+                            </div>
+                            <div className="bio_item-content">
+                                <p>$ {parseInt(movie.revenue).toLocaleString("en-US")}</p>
+                            </div>
+                        </div>
+                        <div className="bio_item" id="bio_keyword">
+                            <div className="bio_item-heading">
+                                <p>Keywords</p>
+                            </div>
+                            <ul className="bio_item-list">
+                                {keywords.map((keyword) => (
+                                    <li className="keywordItem" key={keyword.id}>
+                                        {keyword.name}
+                                    </li>
+                                ))
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-
 
 
             <Modal

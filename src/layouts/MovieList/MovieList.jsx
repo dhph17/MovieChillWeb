@@ -36,7 +36,11 @@ const MovieList = ({ title, data }) => {
                 {title}
                 <FontAwesomeIcon className="movie-title_icon" icon={faAngleRight} />
             </div>
-            <Carousel className="movie_lists" responsive={responsive} draggable={false} autoPlay={true} autoPlaySpeed={3000}>
+            <Carousel className="movie_lists"
+                responsive={responsive}
+                draggable={false} autoPlay={true}
+                autoPlaySpeed={3000}
+            >
                 {data?.map((movie) => (
                     <div
                         key={movie.id}

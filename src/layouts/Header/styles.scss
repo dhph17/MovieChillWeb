@@ -66,22 +66,30 @@ header.solid {
 #search-section {
     height: 30px;
     width: 15%;
-    border: black 2px solid;
+    border: white 2px solid;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
+    background: transparent;
+    backdrop-filter: blur(100px);
     border-radius: 8px;
-    padding: 0 7px;
+    padding: 1% 10px;
 
     input {
         border: none;
         outline: none;
+        font-size: 0.9rem;
         width: 90%;
+        background: transparent;
+        color: white;
+
+        &::placeholder {
+            color: #ccc;
+        }
     }
 
     #search-but {
-        color: black;
+        color: white;
     }
 
     #search-but:hover {

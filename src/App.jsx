@@ -10,6 +10,7 @@ import MovieDetail from './pages/MovieDetail/MovieDetail';
 import MovieList from './pages/MovieList/MovieList';
 
 import Header from './layouts/Header/Header'
+import MovieSearch from './pages/MovieList/MovieSearch';
 
 function App() {
   const [movieTrending, setMovieTrending] = useState([]);
@@ -56,6 +57,7 @@ function App() {
         <Route path="/people/:idPeople" element={<ActorDetail />} />
         <Route path="/movie/:idMovie" element={<MovieDetail />} />
         <Route path="/movielist/:movielist" element={<MovieList />} />
+        <Route path="/movieSearch/query/:value" element={<MovieSearch />} />
       </Routes>
 
     </>

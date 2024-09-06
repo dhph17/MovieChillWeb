@@ -10,7 +10,7 @@
 
 .review-section {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, 1fr);
     gap: 50px 2%;
 
     .review-item {

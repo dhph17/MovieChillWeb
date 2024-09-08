@@ -1,0 +1,127 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css);
+@import "../../assets/font/styles.scss";
+
+footer {
+    height: 55vh;
+    background-color: #1C1C1C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+
+    #logo-section {
+        margin-bottom: 1%;
+        justify-content: center;
+
+        img {
+            height: 80px;
+        }
+    }
+
+    .footer-content {
+        display: flex;
+        margin-bottom: 1%;
+
+        .content-section {
+            width: 25vw;
+            height: 15vh;
+            border: 2px solid gray;
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        #social-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-bottom: 4%;
+            }
+
+            #social-list {
+                display: flex;
+                justify-content: center;
+
+                .social-item {
+                    list-style: none;
+                    margin: 0 15%;
+                    font-size: 1.5rem;
+
+                    a {
+                        color: white;
+                    }
+
+                    &:hover {
+                        transform: translateY(-5px);
+                        transition: 0.3s ease;
+                    }
+                }
+            }
+        }
+
+        #mobile-app-section {
+            padding: 2% 5%;
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+
+            img {
+                height: 70px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .footer-about {
+
+        .about-list_1,
+        .about-list_2 {
+            display: flex;
+            justify-content: center;
+
+            .about-item {
+                list-style: none;
+                text-wrap: nowrap;
+                margin: 1% 4%;
+                font-size: 1.2rem;
+                text-align: center;
+
+                &::before {
+                    content: attr(title);
+                    display: block;
+                    font-weight: bold;
+                    height: 0;
+                    overflow: hidden;
+                    visibility: hidden;
+                }
+
+                &:hover {
+                    font-weight: bold;
+                    text-decoration: underline;
+                    cursor: pointer;
+                    // transition: all 2 ease;
+                }
+            }
+        }
+    }
+
+    #footer-aboutMe {
+        position: absolute;
+        bottom: 0;
+
+        p {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+    }
+}

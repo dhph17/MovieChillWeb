@@ -4,16 +4,11 @@ import ReactPaginate from 'react-paginate';
 
 import './styles.scss'
 
-const MovieList = () => {
+const MovieKeyword = () => {
     let navigate = useNavigate();
-    let { movielist } = useParams()
+    const { IdAndName } = useParams()
+    const [id, name] = IdAndName.split('-');
     let [movies, setMovies] = useState([])
-    let list = {
-        now_playing: "Now Playing",
-        popular: "Popular",
-        top_rated: "Top Rated",
-        upcoming: "Upcoming"
-    }
 
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -30,7 +25,7 @@ const MovieList = () => {
 
             try {
                 const response = await fetch(
-                    `https://api.themoviedb.org/3/movie/${movielist}?language=en-US&page=${page}`,
+                    `https://api.themoviedb.org/3/keyword/${id}/movies?include_adult=false&language=en-US&page=${page}`,
                     options
                 );
 
@@ -47,7 +42,7 @@ const MovieList = () => {
         };
         fetchMovies();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, [movielist, page]);
+    }, [id, page]);
 
     const handlePageClick = async (data) => {
         console.log(data.selected);
@@ -57,7 +52,7 @@ const MovieList = () => {
     return (
         <>
             <div id="movieList-header">
-                <p>{list[movielist]}</p>
+                <p>{name}</p>
             </div>
 
             <div id="movieList-section">
@@ -105,4 +100,4 @@ const MovieList = () => {
     )
 }
 
-export default MovieList
+export default MovieKeyword

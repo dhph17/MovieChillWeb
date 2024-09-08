@@ -360,7 +360,22 @@
                         border-radius: 2px;
                         color: #1C1C1C;
                         background-color: #ccc;
-                        white-space: nowrap
+                        white-space: nowrap;
+                        text-align: center;
+
+                        &::before {
+                            content: attr(title);
+                            display: block;
+                            font-weight: 600;
+                            height: 0;
+                            overflow: hidden;
+                            visibility: hidden;
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                            font-weight: 600;
+                        }
                     }
                 }
             }

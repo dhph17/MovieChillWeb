@@ -70,6 +70,7 @@ const PeopleDetail = () => {
         };
 
         fetchActorDetails();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [idPeople]);
     console.log(actor);
 

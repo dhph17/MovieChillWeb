@@ -40,6 +40,7 @@ const MovieSearch = () => {
             }
         };
         fetchMovies();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [value, page]);
 
     const handlePageClick = async (data) => {

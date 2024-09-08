@@ -114,6 +114,7 @@ const MovieDetail = () => {
         };
 
         fetchMovieDetails();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [idMovie]);
     console.log(actors);
 
@@ -250,7 +251,7 @@ const MovieDetail = () => {
                             </div>
                             <ul className="bio_item-list">
                                 {keywords.map((keyword) => (
-                                    <li className="keywordItem" key={keyword.id}>
+                                    <li className="keywordItem" key={keyword.id} title={keyword.name} onClick={() => navigate(`/keyword/${keyword.id}-${keyword.name}`)}>
                                         {keyword.name}
                                     </li>
                                 ))

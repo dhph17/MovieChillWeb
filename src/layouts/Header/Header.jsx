@@ -98,7 +98,7 @@ const Header = () => {
                             }
                         >
                             {genre?.genres.map((genre) => (
-                                <MenuItem key={genre.id} label={genre.name} />
+                                <MenuItem key={genre.id} label={genre.name} to={`/genre/${genre.id}-${genre.name}`} />
                             ))}
                         </Menu>
                         </li>

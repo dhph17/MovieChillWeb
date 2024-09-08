@@ -54,7 +54,13 @@ const Header = () => {
         }
     };
 
-    const [movieSearch, setMovieSearch] = useState([])
+    const [movieSearch, setMovieSearch] = useState([]);
+    const handleSearch = () => {
+        if (movieSearch.trim()) {
+            navigate(`/movieSearch/query/${movieSearch}`);
+            setMovieSearch('');
+        }
+    };
 
     return (
         <>
@@ -98,9 +104,9 @@ const Header = () => {
                         </li>
                     </ul>
                 </nav>
-                <form id="search-section" onSubmit={(e) => { e.preventDefault(); if (movieSearch.trim()) navigate(`/movieSearch/query/${movieSearch}`); }}>
-                    <input required type="text" placeholder="Search for a movie" onChange={(e) => setMovieSearch(e.target.value)} />
-                    <FontAwesomeIcon id="search-but" icon={faMagnifyingGlass} onClick={() => movieSearch.trim() && navigate(`/movieSearch/query/${movieSearch}`)} />
+                <form id="search-section" onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
+                    <input required type="text" value={movieSearch} placeholder="Search for a movie" onChange={(e) => setMovieSearch(e.target.value)} />
+                    <FontAwesomeIcon id="search-but" icon={faMagnifyingGlass} onClick={handleSearch} />
                 </form>
             </header>
 

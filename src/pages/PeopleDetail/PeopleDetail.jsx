@@ -11,12 +11,14 @@ import {
 
 import MovieList from '../../layouts/MovieList/MovieList';
 import './styles.scss';
+import Loading from '../../layouts/Loading/Loading';
 
 const PeopleDetail = () => {
     const { idPeople } = useParams();
     const [actor, setActor] = useState(null);
     const [movies, setMovies] = useState([]);
     const [tvShows, setTvShows] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const media = {
         'tiktok_id': [faTiktok, 'Tiktok'],
         'instagram_id': [faInstagram, 'Instagram'],
@@ -32,6 +34,8 @@ const PeopleDetail = () => {
 
     useEffect(() => {
         const fetchActorDetails = async () => {
+
+            setIsLoading(true);
             try {
                 let data = {}
                 const urls = [
@@ -66,6 +70,8 @@ const PeopleDetail = () => {
                 setActor(data);
             } catch (error) {
                 console.error('Error fetching actor details:', error);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -74,7 +80,9 @@ const PeopleDetail = () => {
     }, [idPeople]);
     console.log(actor);
 
-    if (!actor) return <p>Loading...</p>;
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <>

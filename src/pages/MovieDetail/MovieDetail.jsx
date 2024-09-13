@@ -16,6 +16,7 @@ import {
 import PeopleList from '../../layouts/PeopleList/PeopleList';
 import ReviewList from '../../layouts/ReviewList/ReviewList';
 import './styles.scss'
+import Loading from '../../layouts/Loading/Loading';
 
 const customStyles = {
     content: {
@@ -45,6 +46,7 @@ const MovieDetail = () => {
     const [crews, setCrews] = useState([]);
     const [keywords, setKeywords] = useState([])
     const [reviews, setReviews] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
 
     const [modalIsOpen, setIsOpen] = useState(false);
     const [trailerUrl, setTrailerUrl] = useState("");
@@ -78,6 +80,7 @@ const MovieDetail = () => {
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
+            setIsLoading(true)
             try {
                 let data = {};
                 const urls = [
@@ -110,13 +113,18 @@ const MovieDetail = () => {
                 setMovie(data);
             } catch (error) {
                 console.error('Error fetching actor details:', error);
+            } finally {
+                setIsLoading(false)
             }
         };
 
         fetchMovieDetails();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [idMovie]);
-    console.log(actors);
+    if (isLoading) {
+        return <Loading />
+    }
+
 
     const directorOrStoryCrew = crews.find(crew => ['Director', 'Story'].includes(crew.job));
     return (

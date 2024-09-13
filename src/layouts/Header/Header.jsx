@@ -13,7 +13,7 @@ import {
 
 import { Menu, MenuItem } from "../Popper/Popper";
 
-import Logo from '../../assets/images/logo.png';
+import Logo from '../../assets/images/logo-header.png';
 
 const Header = () => {
     let navigate = useNavigate();

@@ -1,24 +1,4 @@
-@import "../../assets/font/styles.scss";
-
-#people-header {
-    background-color: #1C1C1C;
-    width: 100%;
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    p {
-        margin-top: 2%;
-        font-size: 3.5rem;
-        font-weight: bold;
-        color: white;
-        text-shadow: white 0 0 5px;
-    }
-}
-
-#people-section {
+#movieList-section {
     background-color: #2C2C2C;
     width: 100%;
     display: flex;
@@ -29,13 +9,12 @@
         align-items: flex-end;
     }
 
-    .people-list {
+    .movieList-list {
         display: grid;
         grid-template-columns: auto auto auto auto;
         gap: 12vh 7vw;
 
-
-        .people-item {
+        .movieList-item {
             height: 300px;
             width: 200px !important;
             // object-fit: cover;
@@ -65,7 +44,7 @@
             }
         }
 
-        .people-item:hover {
+        .movieList-item:hover {
             cursor: pointer;
             scale: 1.05;
             transition: all 0.3s ease;
@@ -91,6 +70,5 @@
                 scale: 1;
             }
         }
-
     }
 }

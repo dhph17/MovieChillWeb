@@ -1,11 +1,11 @@
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import ReactPaginate from 'react-paginate';
 
+import Pagination from "../../layouts/Pagination/Pagination";
+import MovieGrid from "../../layouts/MovieGrid/MovieGrid";
 import './styles.scss'
 
 const MovieSearch = () => {
-    let navigate = useNavigate();
     let { value } = useParams()
     let [movies, setMovies] = useState([])
 
@@ -54,47 +54,9 @@ const MovieSearch = () => {
                 <p>Search &quot;{value}&quot;</p>
             </div>
 
-            <div id="movieList-section">
-                <div className="movieList-list">
-                    {movies?.map((movie) => (
-                        <div key={movie.id} className="movieList-item"
-                            style={{
-                                backgroundImage: `url(${import.meta.env.VITE_IMG_URL}${movie.poster_path})`
-                            }}
-                            onClick={() => navigate(`/movie/${movie.id}`)}
-                        >
-                            <div className="overlay-item">
-                            </div>
-                            <h3 className="item-name">
-                                {movie.title || movie.original_title}
-                            </h3>
-                        </div>
-                    ))}
+            <MovieGrid moviesList={movies} />
 
-                </div>
-
-            </div>
-
-            <ReactPaginate className='pagination-section'
-                breakLabel="..."
-                nextLabel={"»"}
-                onPageChange={handlePageClick}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={3}
-                pageCount={totalPages}
-                previousLabel={"«"}
-                renderOnZeroPageCount={null}
-                containerClassName={'pagination'}
-                pageClassName={'page-item'}
-                pageLinkClassName={'page-link'}
-                nextClassName={'page-item'}
-                nextLinkClassName={'page-link'}
-                previousClassName={page === 1 ? 'page-item disabled' : 'page-item'}
-                previousLinkClassName={'page-link'}
-                breakClassName={'page-item'}
-                breakLinkClassName={'page-link'}
-                activeClassName={'active'}
-            />
+            <Pagination handlePageClick={handlePageClick} totalPages={totalPages} page={page} />
         </>
     )
 }

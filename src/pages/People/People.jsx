@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import ReactPaginate from 'react-paginate';
 
+import Pagination from "../../layouts/Pagination/Pagination";
 import "./styles.scss";
 const People = () => {
     let navigate = useNavigate();
@@ -35,7 +35,7 @@ const People = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
     }, [page]);
-    console.log(actors);
+    // console.log(actors);
 
     const handlePageClick = async (data) => {
         console.log(data.selected);
@@ -68,26 +68,7 @@ const People = () => {
 
             </div>
 
-            <ReactPaginate className='pagination-section'
-                breakLabel="..."
-                nextLabel={"»"}
-                onPageChange={handlePageClick}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={3}
-                pageCount={totalPages}
-                previousLabel={"«"}
-                renderOnZeroPageCount={null}
-                containerClassName={'pagination'}
-                pageClassName={'page-item'}
-                pageLinkClassName={'page-link'}
-                nextClassName={'page-item'}
-                nextLinkClassName={'page-link'}
-                previousClassName={page === 1 ? 'page-item disabled' : 'page-item'}
-                previousLinkClassName={'page-link'}
-                breakClassName={'page-item'}
-                breakLinkClassName={'page-link'}
-                activeClassName={'active'}
-            />
+            <Pagination handlePageClick={handlePageClick} totalPages={totalPages} page={page} />
         </>
     )
 }

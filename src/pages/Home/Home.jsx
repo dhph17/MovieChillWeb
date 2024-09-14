@@ -4,15 +4,16 @@ import Banner from "../../layouts/Banner/Banner";
 import MovieList from "../../layouts/MovieList/MovieList";
 
 import "./styles.scss"
+import TVList from "../../layouts/MovieList/TVList";
 
-const Home = ({ movieTrending, movieTopRates }) => {
+const Home = ({ movieTrending, tvTrending }) => {
     return (
         <>
             <Banner movieTrending={movieTrending} />
 
             <div id="movie-section">
                 <MovieList title="Trending Movie Lists" data={movieTrending} />
-                <MovieList title="Top Rated Movie Lists" data={movieTopRates} />
+                <TVList title="TV Shows Lists" data={tvTrending} />
             </div >
         </>
     )
@@ -20,7 +21,7 @@ const Home = ({ movieTrending, movieTopRates }) => {
 
 Home.propTypes = {
     movieTrending: PropTypes.array,
-    movieTopRates: PropTypes.array,
+    tvTrending: PropTypes.array,
 };
 
 export default Home

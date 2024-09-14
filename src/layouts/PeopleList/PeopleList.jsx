@@ -26,7 +26,7 @@ const PeopleList = ({ title, data }) => {
                 } else if (containerWidth >= 0.5 * window.innerWidth) {
                     setItemsToShow(4.7); // 70vw, hiển thị 4.5 items
                 } else {
-                    setItemsToShow(3);
+                    setItemsToShow(4.7);
                 }
             }
         };

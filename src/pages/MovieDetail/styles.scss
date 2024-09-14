@@ -181,6 +181,12 @@
                 font-size: 1.1rem;
             }
 
+            .movieDetail-info_director_item {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
             .movieDetail-info_item_header {
                 font-weight: lighter;
                 margin-right: 14%;
@@ -238,102 +244,13 @@
     .Info-left {
         width: 65vw;
 
-        #movieDetail-review {
-            .review-title {
-                font-size: 1.5rem;
-                font-weight: 500;
-                margin-bottom: 1.2rem;
-
-                .movie-review_icon {
-                    margin-left: 0.5%;
-                }
-            }
-
-            .review-section {
-                display: grid;
-                grid-template-columns: auto auto;
-                gap: 50px 2%;
-
-                .review-item {
-                    box-shadow: 10px 10px 10px #1C1C1C;
-                    background-color: #1C1C1C;
-                    padding: 5%;
-                    border-radius: 50px;
-                    position: relative;
-
-                    .review-item_header {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 4%;
-
-                        .review-item_header_name {
-                            display: flex;
-                            align-items: center;
-
-                            .header_name-img {
-                                width: 50px;
-                                height: 50px;
-                                border-radius: 50%;
-                                margin-right: 10%;
-                            }
-
-                            .header_name-name {
-                                font-weight: bold;
-                                font-size: 1.1rem;
-                            }
-                        }
-
-                        .review-item_header_rating {
-                            font-weight: bold;
-                            font-size: 1.1rem;
-                        }
-                    }
-
-                    .review-item_content {
-                        margin-bottom: 4%;
-
-                        .content {
-                            display: -webkit-box;
-                            -webkit-line-clamp: 4;
-                            -webkit-box-orient: vertical;
-                            overflow: hidden;
-                            // text-overflow: ellipsis;
-                            transition: max-height 0.3s ease;
-                            line-height: 1.5;
-                        }
-
-                        .content.expanded {
-                            -webkit-line-clamp: unset;
-                            max-height: none;
-                            padding-bottom: 5%;
-                        }
-                    }
-
-                    :hover {
-                        cursor: pointer;
-                    }
-                }
-
-                .review-item_footer {
-                    text-align: end;
-                    position: absolute;
-                    right: 5%;
-                    bottom: 5%;
-
-                    p {
-                        color: #C0C0C0;
-                        font-weight: lighter;
-                        font-size: 0.9rem;
-                    }
-                }
-
-            }
+        #movieDetail-actor {
+            width: 100%;
         }
-
     }
 
     .Info-right {
+        width: 35vw;
         padding-left: 2.5rem;
 
         #movieDetail-Bio {
@@ -384,5 +301,15 @@
         }
     }
 
+
+}
+
+.bio_network-avatar {
+    display: inline-block;
+    // width: 80%;
+    padding: 4%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
 
 }

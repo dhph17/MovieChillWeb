@@ -86,7 +86,23 @@ const Header = () => {
                                 <MenuItem label="Upcoming" to="/movielist/upcoming" />
                             </Menu>
                         </li>
-                        <li><Link className="navbar-item" to="/tvshow">TV SHOWS</Link></li>
+                        <li>
+                            <Menu
+                                className="navbar-item"
+                                to="/tvshow"
+                                label={
+                                    <>
+                                        TV SHOWS &nbsp;<FontAwesomeIcon icon={faCaretDown} />
+                                    </>
+                                }
+                            >
+                                <MenuItem label="On The Air" to="/tvshowlist/on_the_air" />
+                                <MenuItem label="Popular" to="/tvshowlist/popular" />
+                                <MenuItem label="Top Rated" to="/tvshowlist/top_rated" />
+                                <MenuItem label="Airing Today" to="/tvshowlist/airing_today" />
+                            </Menu>
+
+                        </li>
                         <li><Link className="navbar-item" to="/people">PEOPLE</Link></li>
                         <li><Menu
                             onMenuClick={handleMenuClick}
